@@ -1,4 +1,4 @@
-%% JOTA code
+%% Time-varying experiments
 % This script generates Figures 2a, 2b, 3a, 3b, 4, 5a, and 5b. Notation
 % follows that of the manuscript. OGD, ONM, OLNM, and ORGD denote
 % online gradient descent, online Nesterov's method, online long-step
@@ -78,7 +78,6 @@ xlabel('Number of iterations')
 ylabel('Iterate error')
 lgd = legend('lower bound','online gradient descent','online Nesterov`s method','OLNM');
 lgd.Location = 'northwest';
-% savefig('adversary')
 
 %% Figure 2b
 niter = 5e2;
@@ -156,7 +155,6 @@ xlabel('Square root of condition number')
 ylabel('Tracking iterate error')
 lgd = legend('online gradient descent','online Nesterov`s method','OLNM');
 lgd.Location = 'northwest';
-% savefig('adversarys')
 
 %% Figure 3a
 niter = 2e3;
@@ -225,7 +223,6 @@ lgd = legend('online gradient descent','online Nesterov`s method','OLNM');
 lgd.Location = 'northwest';
 xlabel('Number of iterations')
 ylabel('Iterate error')
-% savefig('translating')
 
 %% Figure 3b
 d = 2;
@@ -281,7 +278,6 @@ figure
 plot(sqrt(kappas),track_OLNM,'dg-','MarkerSize',10)
 xlabel('Square root of condition number')
 ylabel('Tracking iterate error for OLNM')
-% savefig('translatings')
 
 %% Figure 4
 cycles = 5;
@@ -377,7 +373,6 @@ xlim([1900 10100])
 ylim([5 30])
 lgd = legend('online gradient descent','online Nesterov`s method','OLNM');
 lgd.Location = 'northwest';
-% savefig('randomwalks')
 
 %% Figure 5
 d = 5;
@@ -388,7 +383,7 @@ phi = @(z) 1./(1+exp(-z));
 xr = zeros(d,1);
 niter_fixedpt = 5;
 
-%% compute sigma, R, and delta when one component of b flips each iteration
+%% Figure 5a
 try
     load('sigmaRdelta.mat','sigmaRdelta')
     sigmas = sigmaRdelta(:,1);
@@ -481,9 +476,8 @@ legend('\sigma(\delta)','R(\delta)')
 xlabel('L')
 xlim([100 1100])
 ylabel('Sample mean')
-% savefig('logistic')
 
-%% compute iterates
+%% Figure 5b
 recenter = 1; %1 means no recentering
 trials = 200;
 eps = 1e-3; % stopping criteria for tracking
@@ -565,4 +559,3 @@ ylabel('Sample mean of tracking gradient error')
 xlim([100 1100])
 lgd = legend('online gradient descent','ORGD','x_c');
 lgd.Location = 'northwest';
-% savefig('logistics')
